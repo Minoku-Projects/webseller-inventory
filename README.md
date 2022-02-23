@@ -1,8 +1,8 @@
 # webseller-inventory
 
-python 3.8
-check for newest pip: python -m pip install --upgrade pip
-pip install kivy[base]
-pip install selenium
-pip install pyzbar
-pip install opencv-python
+python 3.8 <br>
+check for newest pip: python -m pip install --upgrade pip<br>
+pip install kivy[base]<br>
+pip install selenium<br>
+pip install pyzbar<br>
+pip install opencv-python<br>
