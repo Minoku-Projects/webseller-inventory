@@ -1,0 +1,98 @@
+#: import Clock kivy.clock.Clock
+<BackgroundColor@Widget>
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+# Now you can simply Mix the `BackgroundColor` class with almost
+# any other widget... to give it a background.
+<BackgroundLabel@Label+BackgroundColor>
+    background_color: 0, 0, 0, 0
+    # Default the background color for this label
+    # to r 0, g 0, b 0, a 0
+# Use the BackgroundLabel any where in your kv code like below
+
+
+
+<WebSeller>:
+    camera: camera_input
+    colorbrowsermomox: (1, 0, 0, 1)
+    colorbrowserrebuy: (1, 0, 0, 1)
+    colorbrowserdeinecds: (1, 0, 0, 1)
+    GridLayout:
+        rows: 3
+        size: root.size
+        GridLayout: #1nd row
+            cols: 4
+            size_hint_y: None
+            Button:
+                text: root.time
+                size_hint_y: None
+                height: 100
+            BackgroundLabel:
+                text: "Momox geladen"
+                background_color: root.colorbrowsermomox
+                size_hint_y: None
+                height: 100
+            BackgroundLabel:
+                text: "Rebuy geladen"
+                background_color: root.colorbrowserrebuy
+                size_hint_y: None
+                height: 100
+            BackgroundLabel:
+                text: "DeineCDs geladen"
+                background_color: root.colorbrowserdeinecds
+                size_hint_y: None
+                height: 100
+        GridLayout: #2nd row
+            size_hint_y: None
+            cols: 2
+            Button:
+                font_size: 30
+                size_hint_y: None
+                text: "Barcode:"
+                height: 100
+            TextInput:
+
+                font_size: 30
+                size_hint_y: None
+                height: 100
+                id: barcode_input
+                text: root.txtbarcode
+                focus: True
+                multiline: False
+                on_text_validate: root.AddBarcodeToQueue()
+                on_focus: Clock.schedule_once(lambda dt: self.select_all()) if self.focus else None
+        GridLayout: #3rd row
+            cols: 2
+            size_hint_y: 1
+            GridLayout:
+                rows: 3
+                cols: 3
+                size_hint_y: 1
+                Label:
+                    text: "Momox"
+                Label:
+                    text: "Rebuy"
+                Label:
+                    text: "Deine CDs"
+                BackgroundLabel:
+                    id: lbl_momox_preis
+                    text: root.txtpreismomox
+                BackgroundLabel:
+                    id: lbl_rebuy_preis
+                    text: root.txtpreisrebuy
+                BackgroundLabel:
+                    id: lbl_deinecds_text
+                    text: root.txtpreisdeinecds
+            CameraStream:
+                size_hint_y: 1
+                id: camera_input
+<CameraStream>:
+
+
+
+
